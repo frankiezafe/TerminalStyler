@@ -73,3 +73,27 @@ def style( s ):
         else:
             out += font[l[i]]
     return out
+
+def print_all():
+    for i in range(0,100):
+        print( "\033[" + str(i) + "m" + "num " + str(i) + "\n" + font['0'] )
+
+def margin_left( textblock, left ):
+    lines = textblock.split('\n')
+    out = ""
+    for line in lines:
+        out += style("_s" + str( left ) ) + line + style("_n")
+    return out
+
+def linecount( textblock ):
+    return len( textblock.split('\n') )
+
+def lines( textblock, start, stop ):
+    lines = textblock.split('\n')
+    out = ""
+    i = 0
+    for line in lines:
+        if i >= start and i < stop:
+            out += line + style("_n")
+        i += 1
+    return out
